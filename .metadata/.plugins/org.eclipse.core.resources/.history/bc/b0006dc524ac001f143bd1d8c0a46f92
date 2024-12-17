@@ -1,0 +1,5 @@
+package com.mx.Mochila.Repository;
+
+public interface IMochilaRepository {
+
+}

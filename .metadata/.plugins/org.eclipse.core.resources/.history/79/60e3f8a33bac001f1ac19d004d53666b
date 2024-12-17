@@ -1,0 +1,5 @@
+package com.mx.Pokedex.Dominio;
+
+public class Pokemon {
+
+}

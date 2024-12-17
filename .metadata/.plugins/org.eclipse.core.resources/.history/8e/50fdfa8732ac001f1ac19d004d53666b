@@ -1,0 +1,47 @@
+package com.mx.Mochila.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mx.Mochila.Dominio.Mochila;
+import com.mx.Mochila.Service.MochilaServiceImp;
+
+@Controller
+@RequestMapping(path = "/")
+
+public class MochilaController {
+
+	@Autowired
+	private MochilaServiceImp ser;
+	
+	//Listar
+	@GetMapping
+	public String index(Model model) {
+		var lista = ser.listar();
+		model.addAttribute("lista",lista);
+		return "index";
+	}
+	
+	//Dirigir al html de guardar
+	@GetMapping(path = "/nuevo")
+	public String nuevo(Mochila mochila, Model model) {
+		model.addAttribute("mochila",mochila);
+		return "guardar";
+	}
+	
+	//Metodo para guardar una mochila
+	@PostMapping(path = "/guardar")
+	public String guardar(Mochila mochila) {
+		ser.guardar(mochila);
+		return "redirect:/";
+	}
+	
+	
+	
+	
+	
+}

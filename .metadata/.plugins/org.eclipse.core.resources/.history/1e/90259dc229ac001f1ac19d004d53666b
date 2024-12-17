@@ -1,0 +1,19 @@
+<html lang="es" xmlns="http://www.thymeleaf.otg">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		
+		<title>MOCHILA ADMIN</title>
+		
+	</head>
+	
+	<body>
+		
+		
+		<p>HOLA DESDE SPRING</p>
+		
+		
+	</body>
+	
+</html>

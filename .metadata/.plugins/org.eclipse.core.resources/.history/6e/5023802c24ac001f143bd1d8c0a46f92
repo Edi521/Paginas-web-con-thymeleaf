@@ -1,0 +1,5 @@
+package com.mx.Mochila.Service;
+
+public interface IMochilaService {
+
+}

@@ -1,0 +1,5 @@
+package com.mx.Pokedex.Service;
+
+public interface IPokedexService {
+
+}

@@ -1,0 +1,5 @@
+package com.mx.Pokedex.Dao;
+
+public interface IPokedexDao {
+
+}

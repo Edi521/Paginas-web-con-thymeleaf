@@ -1,0 +1,57 @@
+<html lang="es" xmlns="http://www.thymeleaf.otg">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		
+		<title>MOCHILA ADMIN</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		
+	</head>
+	
+	<body>
+		
+		
+		<div class="container">
+			<div class="card-header">
+				<h2>Lista de Mochilas</h2>
+			</div>
+			<div class="card-body">
+				<div>
+					<a class="btn btn-outline-info" th:href="@{/nuevo}">NUEVA</a>
+				</div>
+				<br>
+				<table class="table table-dark table-striped">
+				  <thead>
+					<tr>
+						<th>#</th>
+						<th>MARCA</th>
+						<th>MODELO</th>
+						<th>COLOR</th>
+						<th>PRECIO</th>
+						<th>STOCK</th>
+						<th>EDITAR</th>
+						<th>ELIMINAR</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr th:each="mochila: ${lista}">
+						<td th:text="${mochila.idMochila}"></td>
+						<td th:text="${mochila.marca}"></td>
+						<td th:text="${mochila.modelo}"></td>
+						<td th:text="${mochila.color}"></td>
+						<td th:text="${mochila.precio}"></td>
+						<td th:text="${mochila.stock}"></td>
+						<td><a class="btn btn-outline-warning">EDITAR</a></td>
+						<td><a class="btn btn-outline-danger">ELIMINAR</a></td>
+					</tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+	</body>
+	
+</html>

@@ -1,0 +1,52 @@
+package com.mx.Pokedex.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mx.Pokedex.Dominio.Pokemon;
+import com.mx.Pokedex.Service.PokemonServiceImp;
+
+@Controller
+@RequestMapping(path = "/")
+
+
+public class PokedexController {
+	
+	@Autowired
+	private PokemonServiceImp ser;
+	
+	//Listar
+	@GetMapping
+	public String index(Model model) {
+		var lista = ser.listar();
+		model.addAttribute("lista",lista);
+		return "index";
+	}
+	
+	//dirigir al html de registro
+	@GetMapping(path = "/registro")
+	public String registro(Pokemon pok, Model model) {
+		model.addAttribute("pokemon",pok);
+		return "registro";
+	}
+	
+	//dirigirse al html de editra
+	@GetMapping(path = "/editarFormato/{idPokemon}")
+	public String formatoEditar(Pokemon pokemon, Model model) {
+		pokemon = ser.buscar(pokemon);
+		model.addAttribute("pokemon",pokemon);
+		return "editar";
+	}
+	
+	//Metodo para guardar un pokemon
+	@PostMapping(path = "/guardar")
+	public String guardar(Pokemon pok) {
+		ser.guardar(pok);
+		return "redirect:/";
+	}
+
+}

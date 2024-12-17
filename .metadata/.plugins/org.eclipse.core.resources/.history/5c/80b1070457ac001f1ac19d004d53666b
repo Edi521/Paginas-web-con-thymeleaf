@@ -1,0 +1,36 @@
+package com.mx.Pokedex.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mx.Pokedex.Dominio.Pokemon;
+import com.mx.Pokedex.Service.PokemonServiceImp;
+
+@Controller
+@RequestMapping(path = "/")
+
+
+public class PokedexController {
+	
+	@Autowired
+	private PokemonServiceImp ser;
+	
+	//Listar
+	@GetMapping
+	public String index(Model model) {
+		var lista = ser.listar();
+		model.addAttribute("lista",lista);
+		return "index";
+	}
+	
+	//dirigir al html de registro
+	@GetMapping(path = "/registro")
+	public String registro(Pokemon pok, Model model) {
+		model.addAttribute("pokemon",pok);
+		return "registro";
+	}
+
+}
